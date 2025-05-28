@@ -1,0 +1,219 @@
+/* Modern UI for QR Code Generator - style.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #3a86ff;
+  --secondary: #8338ec;
+  --success: #06d6a0;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: var(--dark);
+}
+
+h1 {
+  margin-bottom: 2rem;
+  color: var(--primary);
+  text-align: center;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background: var(--secondary);
+  border-radius: 3px;
+}
+
+#linkForm {
+  background-color: white;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  width: 100%;
+  max-width: 500px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.company-input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 2px solid #e9ecef;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  font-family: inherit;
+  font-size: 16px;
+  background-color: #f8f9fa;
+  border-left: 4px solid var(--secondary);
+  font-weight: 500;
+}
+
+.company-description {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 2px solid #e9ecef;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  font-family: inherit;
+  font-size: 16px;
+  background-color: #f8f9fa;
+  border-left: 4px solid var(--secondary);
+  resize: vertical;
+}
+
+.company-input:focus, .company-description:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(131, 56, 236, 0.2);
+  outline: none;
+  background-color: white;
+}
+
+.link-input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 2px solid #e9ecef;
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.link-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: var(--border-radius);
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  transition: var(--transition);
+}
+
+#addLink {
+  background-color: transparent;
+  color: var(--primary);
+  padding: 8px 0;
+  width: auto;
+  display: inline-flex;
+  align-items: center;
+}
+
+#addLink:hover {
+  color: var(--secondary);
+  transform: translateY(-1px);
+}
+
+#addLink::before {
+  content: "+";
+  margin-right: 5px;
+  font-size: 18px;
+}
+
+#linkForm button[type="submit"] {
+  background-color: var(--primary);
+  color: white;
+  padding: 12px 20px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+#linkForm button[type="submit"]:hover {
+  background-color: #2b76e5;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#qrPreview {
+  margin-top: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  max-width: 100%;
+  height: auto;
+  background-color: white;
+  padding: 1rem;
+}
+
+#downloadBtns {
+  display: flex;
+  gap: 15px;
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 500px;
+  justify-content: center;
+}
+
+#downloadPng, #downloadSvg {
+  flex: 1;
+  background-color: var(--secondary);
+  color: white;
+  padding: 12px 15px;
+  border-radius: var(--border-radius);
+}
+
+#downloadPng:hover, #downloadSvg:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow);
+}
+
+#downloadPng {
+  background-color: var(--success);
+}
+
+/* Responsive adjustments */
+@media (max-width: 580px) {
+  body {
+    padding: 1rem;
+  }
+  
+  #linkForm {
+    padding: 1.5rem;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  #downloadBtns {
+    flex-direction: column;
+  }
+}
