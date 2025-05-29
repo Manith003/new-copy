@@ -54,7 +54,7 @@ h1 {
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
   margin-bottom: 1rem;
   background: linear-gradient(45deg, var(--secondary), var(--primary));
   -webkit-background-clip: text;
