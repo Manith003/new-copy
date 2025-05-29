@@ -1,6 +1,11 @@
 /* Modern UI for QR Code Preview - preview.css */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+@font-face {
+  font-family: "Gilroy";
+  src: url("./gilroy/Gilroy-Medium.ttf") format("truetype");
+}
+
 :root {
   --primary: #3a86ff;
   --secondary: #8338ec;
@@ -19,7 +24,7 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Gilroy";
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   min-height: 100vh;
   display: flex;
@@ -49,7 +54,7 @@ h1 {
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: -2px;
   margin-bottom: 1rem;
   background: linear-gradient(45deg, var(--secondary), var(--primary));
   -webkit-background-clip: text;
@@ -186,7 +191,7 @@ p {
   }
   
   .company-heading {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   
   .company-description {
