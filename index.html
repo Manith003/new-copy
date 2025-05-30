@@ -11,8 +11,16 @@
   <form id="linkForm">
     <input type="text" id="companyName" placeholder="Enter Company Name" class="company-input"><br>
     <textarea id="companyDescription" placeholder="Enter Company Description" class="company-description"></textarea><br>
-    <input type="text" placeholder="Enter Link 1" class="link-input"><br>
-    <input type="text" placeholder="Enter Link 2" class="link-input"><br>
+    
+    <div class="link-container">
+      <input type="text" placeholder="Enter Link Name" class="link-name">
+      <input type="url" placeholder="Enter Link URL" class="link-url">
+    </div>
+    <div class="link-container">
+      <input type="text" placeholder="Enter Link Name" class="link-name">
+      <input type="url" placeholder="Enter Link URL" class="link-url">
+    </div>
+    
     <button type="button" id="addLink">+ Add another link</button><br><br>
     <button type="submit">Generate QR</button>
   </form>

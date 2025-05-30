@@ -21,14 +21,39 @@ if (id) {
       }
       
       const ul = document.getElementById("linkList");
-      links.forEach((link, index) => {
-        const li = document.createElement("li");
-        li.innerHTML = `<span class="link-number">${index + 1}</span><a href="${link}" target="_blank">${link}</a>`;
-        ul.appendChild(li);
-      });
+      
+      // Check if links is an array of objects (new format) or array of strings (old format)
+      if (links && links.length > 0) {
+        links.forEach((link, index) => {
+          const li = document.createElement("li");
+          
+          // Handle both new format (object with name & url) and old format (just url string)
+          if (typeof link === 'object' && link.name && link.url) {
+            // New format - display name but link to URL
+            li.innerHTML = `
+              <span class="link-number">${index + 1}</span>
+              <a href="${link.url}" target="_blank">
+                <img src="https://maps.google.com/mapfiles/ms/icons/red-dot.png" class="location-icon" alt="Location">
+                ${link.name}
+                <span class="arrow-icon">→</span>
+              </a>`;
+          } else {
+            // Old format - display and link to URL
+            const url = typeof link === 'string' ? link : link.url;
+            li.innerHTML = `<span class="link-number">${index + 1}</span><a href="${url}" target="_blank">${url}</a>`;
+          }
+          
+          ul.appendChild(li);
+        });
+      } else {
+        ul.innerHTML = "<li>No links available</li>";
+      }
     } else {
       document.body.innerHTML = "<p>Invalid or expired QR code.</p>";
     }
+  }).catch(error => {
+    console.error("Error getting document:", error);
+    document.body.innerHTML = "<p>Error loading links. Please try again later.</p>";
   });
 } else {
   document.body.innerHTML = "<p>No QR ID provided.</p>";

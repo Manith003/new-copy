@@ -107,10 +107,14 @@ h1::after {
   background-color: white;
 }
 
-.link-input {
-  width: 100%;
-  padding: 12px 15px;
+.link-container {
+  display: flex;
+  gap: 10px;
   margin-bottom: 15px;
+}
+
+.link-name, .link-url {
+  padding: 12px 15px;
   border: 2px solid #e9ecef;
   border-radius: var(--border-radius);
   transition: var(--transition);
@@ -118,7 +122,16 @@ h1::after {
   font-size: 16px;
 }
 
-.link-input:focus {
+.link-name {
+  flex: 1;
+  border-left: 4px solid var(--primary);
+}
+
+.link-url {
+  flex: 1.5;
+}
+
+.link-name:focus, .link-url:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
   outline: none;
@@ -220,5 +233,10 @@ button {
   
   #downloadBtns {
     flex-direction: column;
+  }
+  
+  .link-container {
+    flex-direction: column;
+    gap: 5px;
   }
 }

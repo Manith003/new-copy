@@ -1,9 +1,21 @@
 document.getElementById("addLink").onclick = () => {
-  const input = document.createElement("input");
-  input.type = "text";
-  input.placeholder = "Enter another link";
-  input.classList.add("link-input");
-  document.getElementById("linkForm").insertBefore(input, document.getElementById("addLink"));
+  const container = document.createElement("div");
+  container.classList.add("link-container");
+  
+  const nameInput = document.createElement("input");
+  nameInput.type = "text";
+  nameInput.placeholder = "Enter Link Name";
+  nameInput.classList.add("link-name");
+  
+  const urlInput = document.createElement("input");
+  urlInput.type = "url";
+  urlInput.placeholder = "Enter Link URL";
+  urlInput.classList.add("link-url");
+  
+  container.appendChild(nameInput);
+  container.appendChild(urlInput);
+  
+  document.getElementById("linkForm").insertBefore(container, document.getElementById("addLink"));
 };
 
 document.getElementById("linkForm").onsubmit = async (e) => {
@@ -14,11 +26,22 @@ document.getElementById("linkForm").onsubmit = async (e) => {
   
   const companyDescription = document.getElementById("companyDescription").value.trim();
   
-  const links = Array.from(document.getElementsByClassName("link-input"))
-    .map(i => i.value.trim())
-    .filter(Boolean);
+  // Get all link containers
+  const linkContainers = document.querySelectorAll(".link-container");
+  const links = [];
+  
+  // Process each link container to get name and URL
+  linkContainers.forEach(container => {
+    const name = container.querySelector(".link-name").value.trim();
+    const url = container.querySelector(".link-url").value.trim();
+    
+    // Only add links that have both name and URL
+    if (name && url) {
+      links.push({ name, url });
+    }
+  });
 
-  if (!links.length) return alert("Please enter at least one link");
+  if (!links.length) return alert("Please enter at least one link with both name and URL");
 
   try {
     const docRef = await db.collection("qr_links").add({ 
